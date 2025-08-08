@@ -1,1 +1,46 @@
-<h1>Ola mundo</h1>
+{% extends "global/base.html" %}
+
+{% block title %}Register | {% endblock title %}
+
+{% block content %}
+  <div class="main-content center container">
+    <h2>Register {{request.session.number}}</h2>
+  </div>
+
+  <div class="main-content container">
+    <form action="{% url "authors:create" %}" method="POST">
+      {% csrf_token %}
+
+      <div class="form-content form-content-grid">
+        {% for fields in form %}
+          <div class="form-group">
+            <label for="{{fields.id_for_label}}">{{fields.label}}</label>
+            {{fields}}
+
+            {% if fields.help_text %}
+              <p class="help-text">{{fields.help_text}}</p>
+            {% endif %}
+
+            {{fields.errors}}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if form.errors %}
+        <div class="form-content form-content-grid">
+          <div class="form-group">
+            <div class="message message-error">
+              There are errors in the form, please fix them and send again.
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="form-content form-content-grid">
+        <div class="form-group">
+          <button type="submit">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

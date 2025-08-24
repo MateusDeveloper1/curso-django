@@ -55,7 +55,7 @@ def login_create(request):
         )
 
         if authenticated_user is not None:
-            messages.success(request, "Your are legged in")
+            messages.success(request, "You are logged in")
             login(request, authenticated_user)
         else:
             messages.error(request, "Invalid credentials")

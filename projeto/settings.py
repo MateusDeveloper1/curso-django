@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "INSECURE")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get("DEBUG") == "1" else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "recipes",
-    "authors"
+    "authors",
+    "debug_toolbar"
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -139,4 +141,9 @@ MESSAGE_TAGS = {
     constants.SUCCESS: "message-success",
     constants.WARNING: "message-warning",
     constants.INFO: "message-info"
+}
+
+#Django debug toolbar
+INTERNAL_IPS = {
+    "127.0.0.1"
 }

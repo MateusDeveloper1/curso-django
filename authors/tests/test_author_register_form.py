@@ -12,7 +12,7 @@ class AuthorRegisterFormUnitTest(TestCase):
         ("first_name", "Ex.: John"),
         ("last_name", "Ex.: Doe"),
         ("password", "Type your password"),
-        ("password2", "Reapeat your password"),
+        ("password2", "Repeat your password"),
     ])
     def test_fields_placeholder(self, field, placeholder):
         form = RegisterForm()
@@ -150,7 +150,7 @@ class AuthorRegisterFormIntegrationTest(DjangoTestCase):
         self.client.post(url, data=self.form_data, follow=True)
         response = self.client.post(url, data=self.form_data, follow=True)
 
-        msg = "User email is already in use"
+        msg = "User e-mail is already in use"
         self.assertIn(msg, response.context["form"].errors.get("email"))
         self.assertIn(msg, response.content.decode("utf-8"))
 

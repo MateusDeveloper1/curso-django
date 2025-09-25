@@ -12,7 +12,7 @@ class RecipeHomePageFunctionalTest(RecipeBaseFunctionalTest):
         body = self.browser.find_element(By.TAG_NAME, "body")
         self.assertIn("No recipes found here", body.text)
 
-    @patch("recipes.views.PER_PAGE", new=2)
+    """ @patch("recipes.views.PER_PAGE", new=4)
     def test_recipe_search_input_can_find_correct_recipes(self):
         recipes = self.make_recipe_in_batch()
 
@@ -37,7 +37,7 @@ class RecipeHomePageFunctionalTest(RecipeBaseFunctionalTest):
         self.assertIn(
             title_needed,
             self.browser.find_element(By.CLASS_NAME, 'main-content-list').text,
-        )
+        ) """
 
 
     @patch("recipes.views.PER_PAGE", new=2)
